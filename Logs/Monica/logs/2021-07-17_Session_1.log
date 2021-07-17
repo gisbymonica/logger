@@ -1,0 +1,12 @@
+[2021-07-17T11:57:12.900] [INFO] User - undefined
+[2021-07-17T11:57:39.476] [INFO] User - message here
+[2021-07-17T12:05:24.150] [INFO] Normal - message here
+[2021-07-17T12:08:31.160] [ERROR] Error - message here
+[2021-07-17T12:08:53.103] [INFO] Normal - message here
+[2021-07-17T12:10:03.210] [INFO] normal - message here
+[2021-07-17T12:10:14.351] [ERROR] error - message here
+[2021-07-17T12:12:28.964] [ERROR] error - message here
+[2021-07-17T12:17:15.525] [ERROR] error - message here
+[2021-07-17T12:21:11.956] [INFO] normal - message here
+[2021-07-17T12:22:07.184] [INFO] normal - message here
+[2021-07-17T12:22:14.629] [INFO] normal - message here
