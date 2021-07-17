@@ -16,11 +16,13 @@ Logger Service
   }
 - /create-report : POST
   - Request Sample:
+  - ```
     {
       "user": "abc",
       "report": "def",
       "content": "<h1>Hello</h1>" //html content
     }
+    ```
 - read-report : POST
   - Request Sample:
   {
