@@ -8,12 +8,14 @@ Logger Service
 - REST end-points:
 - /log-info : POST 
   - Request Sample:
+  - ```
     {
     "user": "Monica",
     "source": "id",
     "type": "normal", //(normal/error)
     "message": "message here"
   }
+  ```
 - /create-report : POST
   - Request Sample:
   - ```
@@ -25,12 +27,16 @@ Logger Service
     ```
 - read-report : POST
   - Request Sample:
+  - ```
   {
     "user": "abc",
     "report": "def"
   }
+  ```
 - /zip-log : POST
   - Request Sample:
+  - ```
     {
       "user": "Monica"
     }
+    ```
