@@ -1,6 +1,7 @@
 # logger
 Logger Service
 
+- Pre-requisite: node
 - Clone the branch
 - run npm install
 - run node generate-log.js
