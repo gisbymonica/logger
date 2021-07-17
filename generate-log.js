@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 
 app.post('/log-info', function (req, res) {
     try {
-        if(req.body.user === undefined || req.body.sessionID === undefined || req.body.type === undefined){
+        if(req.body.user === undefined || req.body.source === undefined || req.body.type === undefined){
             throw "reqest params missing";
         } else if (req.body.type !== "normal" && req.body.type !== "error") {
             throw "log type not supported"
@@ -39,7 +39,7 @@ app.post('/log-info', function (req, res) {
             var logFileDirectory = userFilePath + "\\" + req.body.user + "\\logs";
             var dateTime = new Date();
             var date = dateTime.toISOString().slice(0, 10);
-            var logFileName = date + "_" + req.body.sessionID + ".log";
+            var logFileName = date + "_" + req.body.source + ".log";
             var logFileFullPath = logFileDirectory + "\\" + logFileName;
             var logType = req.body.type;
             if (!fs.existsSync(logFileDirectory)) {
@@ -80,10 +80,10 @@ app.post('/log-info', function (req, res) {
 
 app.post('/create-report', function (req, res) {
     var userName = req.body.user;
-    var projectID = req.body.projectID;
+    var report = req.body.report;
     var htmlData = req.body.html;
     var reportDirectory = userFilePath + "\\" + userName;
-    var reportFullPath = reportDirectory + "\\" + projectID + ".html";
+    var reportFullPath = reportDirectory + "\\" + report + ".html";
     if (!fs.existsSync(reportDirectory)) {
         fs.mkdirSync(reportDirectory);
     }
@@ -95,8 +95,8 @@ app.post('/create-report', function (req, res) {
 
 app.post('/read-report', function (req, res) {
     var userName = req.body.user;
-    var projectID = req.body.projectID;
-    var filePath = userFilePath + "\\" + userName + "\\" + projectID + '.html';
+    var report = req.body.report;
+    var filePath = userFilePath + "\\" + userName + "\\" + report + '.html';
     fs.readFile(filePath, { encoding: 'utf-8' }, function (err, data) {
         if (!err) {
             console.log('received data: ' + data);
@@ -109,7 +109,7 @@ app.post('/read-report', function (req, res) {
 
 app.post('/zip-log', function (req, res) {
 
-    var username = req.body.username;
+    var username = req.body.user;
     var userLogLocation = userFilePath + "//"+ username +"//logs";
     zipPath = ZipFolder + username + '.zip';
     output = fs.createWriteStream(zipPath);
