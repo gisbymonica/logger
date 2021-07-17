@@ -81,16 +81,18 @@ app.post('/log-info', function (req, res) {
 app.post('/create-report', function (req, res) {
     var userName = req.body.user;
     var report = req.body.report;
-    var htmlData = req.body.html;
+    var contentHtml = req.body.content;
     var reportDirectory = userFilePath + "\\" + userName;
     var reportFullPath = reportDirectory + "\\" + report + ".html";
     if (!fs.existsSync(reportDirectory)) {
         fs.mkdirSync(reportDirectory);
     }
-    fs.writeFile(reportFullPath, htmlData, (err) => {
+    fs.writeFile(reportFullPath, contentHtml, (err) => {
         if (err) throw err;
     });
-    res.json("html written")
+    res.json({
+        "result": "Report generation Successful"
+    })
 });
 
 app.post('/read-report', function (req, res) {
